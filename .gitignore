@@ -1,0 +1,6 @@
+# Git
+.git
+.github
+
+# API Server
+__pycache__
