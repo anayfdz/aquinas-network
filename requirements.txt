@@ -1,6 +1,4 @@
-fastapi
-uvicorn
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
 sqlalchemy
-pydantic
-mysqlclient
-docker-compose

@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python run.py
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:5000"
+    depends_on:
+      - db
+    environment:
+      FLASK_APP: ./migrations/run.py
+      FLASK_ENV: development
+      SECRET_KEY: mysql
+      SQLALCHEMY_DATABASE_URI: mysql://mysql:password@db:3306/dog
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_USER: mysql
+      MYSQL_ROOT_PASSWORD: password
+      DB: dog
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql/data
+
+volumes:
+  mysql_data:
