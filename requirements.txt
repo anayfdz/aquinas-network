@@ -1,4 +1,6 @@
-Flask
-Flask-SQLAlchemy
-Flask-Migrate
+fastapi
+uvicorn
 sqlalchemy
+mysql-connector-python
+pydantic
+requests

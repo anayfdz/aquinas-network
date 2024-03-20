@@ -1,7 +1,8 @@
 # Git
 .git
 .github
-env
+.env
+.venv
 
 # API Server
 __pycache__

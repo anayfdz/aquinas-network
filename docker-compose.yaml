@@ -1,31 +1,19 @@
 version: '3'
 
 services:
-  web:
-    build: .
-    command: python run.py
-    volumes:
-      - ./app:/app
-    ports:
-      - "8000:5000"
-    depends_on:
-      - db
-    environment:
-      FLASK_APP: ./migrations/run.py
-      FLASK_ENV: development
-      SECRET_KEY: mysql
-      SQLALCHEMY_DATABASE_URI: mysql://mysql:password@db:3306/dog
-
   db:
     image: mysql:latest
+    restart: always
     environment:
-      MYSQL_USER: mysql
-      MYSQL_ROOT_PASSWORD: password
-      DB: dog
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dogs_db
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql/data
-
-volumes:
-  mysql_data:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db

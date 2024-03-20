@@ -1,0 +1,5 @@
+CREATE TABLE dogs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    breed VARCHAR(255) NOT NULL,
+    subbreeds TEXT
+);
